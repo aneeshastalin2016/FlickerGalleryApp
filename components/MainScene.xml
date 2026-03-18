@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="MainScene" extends="Scene">
+    <children>
+        <Label
+            text="Flicker Gallery App"
+            horizAlign="center"
+            vertAlign="center"
+            width="1280"
+            height="720" />
+    </children>
+</component>
