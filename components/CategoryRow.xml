@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="CategoryRow" extends="Group">
+    <script type="text/brightscript" uri="pkg:/source/Utils.brs" />
+    <script type="text/brightscript" uri="pkg:/components/CategoryRow.brs" />
+
+    <interface>
+        <field id="title" type="string" />
+        <field id="items" type="array" alwaysNotify="true" />
+        <field id="selectedItem" type="assocarray" alwaysNotify="true" />
+    </interface>
+
+    <children>
+        <Label
+            id="rowTitle"
+            translation="[0,0]"
+            width="1000"
+            height="30"
+            font="font:MediumBoldSystemFont"
+            color="0xFFFFFFFF" />
+
+        <MarkupGrid
+            id="grid"
+            translation="[0,35]"
+            itemComponentName="PosterCard"
+            itemSize="[170,100]"
+            itemSpacing="[18,0]"
+            numColumns="6"
+            numRows="1"
+            drawFocusFeedback="false" />
+            
+    </children>
+</component>

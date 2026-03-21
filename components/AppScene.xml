@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="AppScene" extends="Scene">
+    <script type="text/brightscript" uri="pkg:/source/Config.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Utils.brs" />
+    <script type="text/brightscript" uri="pkg:/components/AppScene.brs" />
+    
+    <interface>
+        <field id="selectedPhoto" type="assocarray" />
+    </interface>
+
+    <children>
+        <Rectangle
+            id="bg"
+            width="1280"
+            height="720"
+            color="0x101010FF" />
+
+        <Label
+            id="header"
+            text="Flickr Gallery"
+            translation="[40,20]"
+            width="1200"
+            height="40"
+            font="font:LargeBoldSystemFont"
+            color="0xFFFFFFFF" />
+
+        <Label
+            id="statusLabel"
+            text="Loading galleries..."
+            translation="[40,70]"
+            width="1200"
+            height="30"
+            font="font:MediumSystemFont"
+            color="0xBBBBBBFF" />
+
+    
+
+<Group id="rowsGroup" translation="[40,130]" />
+    <BusySpinner
+            id="spinner"
+       
+            translation="[100,100]"
+            visible="true" />
+        <!-- <Group id="rowsGroup" translation="[40,110]" /> -->
+        <Group id="detailGroup" visible="false">
+            <Rectangle width="1280" height="720" color="0x000000CC" />
+            <Poster id="detailPoster" translation="[80,90]" width="560" height="420" loadDisplayMode="scaleToFit" />
+            <Label id="detailTitle" translation="[690,90]" width="500" height="50" font="font:LargeBoldSystemFont" color="0xFFFFFFFF" />
+            <Label id="detailMeta" translation="[690,150]" width="500" height="40" font="font:MediumSystemFont" color="0xDDDDDDFF" />
+            <Label id="detailDescription" translation="[690,210]" width="500" height="320" wrap="true" numLines="12" font="font:MediumSystemFont" color="0xFFFFFFFF" />
+            <Label id="detailCloseHint" translation="[690,560]" width="400" height="30" font="font:SmallSystemFont" color="0xAAAAAAFF" text="Press Back to close" />
+        </Group>
+
+        <FlickrFeedTask id="feedTask" />
+        <FlickrDetailTask id="detailTask" />
+    </children>
+</component>

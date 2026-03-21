@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="FlickrDetailTask" extends="Task">
+    <script type="text/brightscript" uri="pkg:/source/Config.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Utils.brs" />
+    <script type="text/brightscript" uri="pkg:/components/FlickrDetailTask.brs" />
+    <interface>
+        <field id="photo" type="assocarray" />
+        <field id="content" type="assocarray" />
+        <field id="errorMessage" type="string" />
+    </interface>
+</component>
