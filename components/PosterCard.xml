@@ -1,0 +1,74 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<component name="PosterCard" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/PosterCard.brs" />
+    <interface>
+        <field id="itemContent" type="node" onChange="showContent" />
+        <field id="focusPercent" type="float" onChange="showFocus" />
+    </interface>
+
+    <children>
+        <Poster
+            id="thumb"
+            width="170"
+            height="96"
+            loadDisplayMode="scaleToFill" />
+
+        <Rectangle
+            id="focusRect"
+            width="174"
+            height="100"
+            translation="[-2,-2]"
+            color="0x00A0FFFF"
+            visible="false" />
+
+        <Label
+            id="titleLabel"
+            translation="[0,102]"
+            width="170"
+            height="32"
+            font="font:SmallSystemFont"
+            color="0xFFFFFFFF"
+            maxLines="2"
+            horizAlign="left" />
+    </children>
+</component> -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="PosterCard" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/PosterCard.brs" />
+
+    <interface>
+        <field id="itemContent" type="node" onChange="showContent" />
+        <field id="focusPercent" type="float" onChange="showFocus" />
+        <!-- <field id = "rowFocusPercent" type = "float" onChange = "showrowfocus"/> -->
+    </interface>
+
+    <children>
+<Group id="scaleGroup">
+        <Poster
+            id="thumb"
+            width="170"
+            height="96"
+            loadDisplayMode="scaleToFill" />
+</Group>
+
+        <!-- <Rectangle
+            id="focusRect"
+            width="174"
+            height="100"
+            translation="[-2,-2]"
+            color="0x00000000"
+            visible="false" /> -->
+
+        <Label
+            id="titleLabel"
+            translation="[0,102]"
+            width="170"
+            height="32"
+            font="font:SmallSystemFont"
+            color="0xFFFFFFFF"
+            maxLines="2"
+            horizAlign="left"
+            visible="false" />
+    </children>
+</component>
