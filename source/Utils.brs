@@ -1,6 +1,7 @@
+'creates Flickr API request URL
 function BuildFlickrUrl(method as String, extraParams = invalid as Dynamic) as String
     cfg = GetAppConfig()
-
+'for storing query parameters
     params = {
         method: method
         api_key: cfg.apiKey
@@ -15,18 +16,19 @@ function BuildFlickrUrl(method as String, extraParams = invalid as Dynamic) as S
 
     if extraParams <> invalid
         for each key in extraParams
-            params[key] = extraParams[key]
+            params[key] = extraParams[key]  'adding extra parameters like tag,pg no.
         end for
     end if
 
     query = []
     for each key in params
-        query.Push(key + "=" + UrlEncode(params[key].ToStr()))
+        query.Push(key + "=" + UrlEncode(params[key].ToStr())) ' converting param to key value format,comas encoded 
     end for
 
-    return cfg.baseUrl + "?" + Join(query, "&")
+    return cfg.baseUrl + "?" + Join(query, "&") ' everything joined
 end function
 
+' works when user clicks photo
 function BuildGetInfoUrl(photoId as String) as String
     cfg = GetAppConfig()
 
@@ -39,12 +41,12 @@ function BuildGetInfoUrl(photoId as String) as String
     return url
 end function
 
-function UrlEncode(value as String) as String
+function UrlEncode(value as String) as String   'string 
     x = CreateObject("roUrlTransfer")
     return x.Escape(value)
 end function
 
-function Join(arr as Object, delim as String) as String
+function Join(arr as Object, delim as String) as String 'join arr*string
     result = ""
     for i = 0 to arr.Count() - 1
         result = result + arr[i]
@@ -55,6 +57,7 @@ function Join(arr as Object, delim as String) as String
     return result
 end function
 
+' save from invalid crash as obj=invalid
 function SafeGet(obj as Object, key as String, defaultValue = "" as Dynamic) as Dynamic
     if obj <> invalid and obj.DoesExist(key)
         return obj[key]
@@ -62,6 +65,7 @@ function SafeGet(obj as Object, key as String, defaultValue = "" as Dynamic) as 
     return defaultValue
 end function
 
+' big image and building new if unavailable
 function BuildLargeImageUrl(photo as Object) as String
     if photo = invalid then return ""
 
@@ -76,6 +80,7 @@ function BuildLargeImageUrl(photo as Object) as String
     return ""
 end function
 
+'small image and build new if unavailble
 function BuildThumbUrl(photo as Object) as String
     if photo = invalid then return ""
 
@@ -89,3 +94,8 @@ function BuildThumbUrl(photo as Object) as String
 
     return ""
 end function
+
+
+
+'function BuildFlickrUrl("flickr.photos.search"),{tags: "popular,trending,photography,featured", 
+                   
