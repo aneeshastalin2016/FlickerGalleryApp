@@ -17,8 +17,8 @@
             height="30"
             font="font:MediumBoldSystemFont"
             color="0xFFFFFFFF" />
-
-        <MarkupGrid
+<!-- posters -->
+        <MarkupGrid 
             id="grid"
             translation="[0,35]"
             itemComponentName="PosterCard"
