@@ -29,7 +29,7 @@ end sub
 
 sub onItemSelected() 
     idx = m.grid.itemSelected
-    print "idx"idx
+    print "idx" idx
     if idx < 0 or m.top.items = invalid or idx >= m.top.items.Count()
         return
     end if

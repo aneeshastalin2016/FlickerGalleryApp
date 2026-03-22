@@ -27,6 +27,5 @@
             numColumns="6"
             numRows="1"
             drawFocusFeedback="false" />
-            
     </children>
 </component>
