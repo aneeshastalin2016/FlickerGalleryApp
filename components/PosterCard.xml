@@ -9,9 +9,7 @@
 
                 <children>
             <Group id="scaleGroup">
-                <!-- scalegroup - handling focus -->
-                <!-- 'grid image' -->
-
+            
                     <Poster 
                         id="thumb"
                         width="170"
