@@ -1,14 +1,10 @@
 sub init()
     m.statusLabel = m.top.findNode("statusLabel")
-    m.spinner = m.top.findNode("spinner")
     m.rowsGroup = m.top.findNode("rowsGroup")
     m.currentRowIndex = 0
-' m.rowSpacing = 120
-m.rowSpacing = 140
-m.baseRowsY = 150
-m.spinner.visible=true
-m.spinner.control="start"
-m.visibleTopRowOffset = 1
+    m.rowSpacing = 140
+    m.baseRowsY = 150
+    m.visibleTopRowOffset = 1
 
     m.detailGroup = m.top.findNode("detailGroup")
     m.detailPoster = m.top.findNode("detailPoster")
@@ -33,7 +29,6 @@ end sub
 sub buildEmptyRows()
     cfg = GetAppConfig()
     y = 0
-    ' m.currentRowIndex = 0
 
     for each cat in cfg.categories
         row = CreateObject("roSGNode", "CategoryRow")
@@ -42,7 +37,6 @@ sub buildEmptyRows()
         row.observeField("selectedItem", "onRowItemSelected")
         m.rowsGroup.appendChild(row)
         m.rows.Push(row)
-        ' y = y + 150
         y=y+m.rowSpacing
     end for
 m.rowsGroup.translation = [40, m.baseRowsY]
@@ -57,12 +51,8 @@ sub onFeedLoaded()
     data = m.feedTask.content
     if data = invalid
         m.statusLabel.text = "No data returned"
-        m.spinner.control="stop"
-        m.spinner.visible = false
         return
     end if
- m.spinner.control="stop"
-    m.spinner.visible = false
     m.statusLabel.text = "Use remote arrows to browse. OK to open details."
 
     for i = 0 to m.rows.Count() - 1
@@ -82,8 +72,6 @@ sub onFeedLoaded()
 end sub
 
 sub onFeedError()
-     m.spinner.control="stop"
-    m.spinner.visible = false
     if m.feedTask.errorMessage <> invalid and m.feedTask.errorMessage <> ""
         m.statusLabel.text = m.feedTask.errorMessage
     else
@@ -96,16 +84,11 @@ sub onRowItemSelected(event as Object)
     if selected = invalid then return
 
     m.statusLabel.text = "Loading details..."
-    
-    m.spinner.visible = true
- m.spinner.control="start"
     m.detailTask.photo = selected
     m.detailTask.control = "RUN"
 end sub
 
 sub onDetailLoaded()
-     m.spinner.control="stop"
-    m.spinner.visible = false
 
     info = m.detailTask.content
     if info = invalid then return
@@ -114,46 +97,14 @@ sub onDetailLoaded()
     m.detailDescription.text = SafeGet(info, "description", "No description available.")
     m.detailPoster.uri = SafeGet(info, "imageUrl", "")
     m.detailMeta.text = SafeGet(info, "metaText", "Metadata unavailable")
-
     m.detailGroup.visible = true
     m.statusLabel.text = "Detail view open"
 end sub
 
 sub onDetailError()
-     m.spinner.control="stop"
-    m.spinner.visible = false
     m.statusLabel.text = "Failed to load image details."
 end sub
 
-' function onKeyEvent(key as String, press as Boolean) as Boolean
-'     if not press then return false
-
-'     if m.detailGroup.visible
-'         if key = "back"
-'             m.detailGroup.visible = false
-'             m.statusLabel.text = "Use remote arrows to browse. OK to open details."
-'             focusRowByIndex(m.currentRowIndex)
-'             return true
-'         end if
-'         return false
-'     end if
-
-'     if key = "down"
-'         if m.currentRowIndex < m.rows.Count() - 1
-'             m.currentRowIndex = m.currentRowIndex + 1
-'             focusRowByIndex(m.currentRowIndex)
-'             return true
-'         end if
-'     else if key = "up"
-'         if m.currentRowIndex > 0
-'             m.currentRowIndex = m.currentRowIndex - 1
-'             focusRowByIndex(m.currentRowIndex)
-'             return true
-'         end if
-'     end if
-
-'     return false
-' end function
 function onKeyEvent(key as String, press as Boolean) as Boolean
      if not press then return false
 if m.detailGroup.visible
@@ -165,32 +116,10 @@ if m.detailGroup.visible
         end if
         return false
     end if
-
-    ' if key = "down"
-    '     if m.currentRowIndex < m.rows.Count() - 1
-    '         print "m.rows.Count()"m.rows.Count()
-    '         print "m.currentRowIndex"m.currentRowIndex
-    '         m.currentRowIndex = m.currentRowIndex + 1
-    '         print "m.currentRowIndex1"m.currentRowIndex
-    '         focusRowByIndex(m.currentRowIndex)
-    '         updateRowsScroll()
-    '         return true
-    '     end if
-
-    ' else if key = "up"
-    '     if m.currentRowIndex > 0
-    '         print "m.currentRowIndex2"m.currentRowIndex
-    '         m.currentRowIndex = m.currentRowIndex - 1
-    '         print "m.currentRowIndex3"m.currentRowIndex
-    '         focusRowByIndex(m.currentRowIndex)
-    '         updateRowsScroll()
-    '         return true
-    '     end if
-    ' end if
 if key = "down"
     if m.currentRowIndex < m.rows.Count() - 1
         m.currentRowIndex = m.currentRowIndex + 1
-        
+       
          updateRowsScroll()
          focusRowByIndex(m.currentRowIndex)
        
@@ -204,7 +133,6 @@ if key = "up"
         m.currentRowIndex = m.currentRowIndex - 1
          updateRowsScroll()
         focusRowByIndex(m.currentRowIndex)
-        ' updateRowsScroll()
         return true
     end if
     return true

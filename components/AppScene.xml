@@ -3,11 +3,9 @@
     <script type="text/brightscript" uri="pkg:/source/Config.brs" />
     <script type="text/brightscript" uri="pkg:/source/Utils.brs" />
     <script type="text/brightscript" uri="pkg:/components/AppScene.brs" />
-    
     <interface>
         <field id="selectedPhoto" type="assocarray" />
     </interface>
-
     <children>
         <Rectangle
             id="bg"
@@ -18,30 +16,22 @@
         <Label
             id="header"
             text="Flickr Gallery"
-            translation="[40,20]"
-            width="1200"
-            height="40"
+            translation="[40,50]"
+            width="800"
+            height="30"
             font="font:LargeBoldSystemFont"
             color="0xFFFFFFFF" />
 
         <Label
             id="statusLabel"
-            text="Loading galleries..."
-            translation="[40,70]"
+            text="Loading Galleries..."
+            translation="[40,85]"
             width="1200"
             height="30"
             font="font:MediumSystemFont"
             color="0xBBBBBBFF" />
 
-    
-
 <Group id="rowsGroup" translation="[40,130]" />
-    <BusySpinner
-            id="spinner"
-       
-            translation="[100,100]"
-            visible="true" />
-        <!-- <Group id="rowsGroup" translation="[40,110]" /> -->
         <Group id="detailGroup" visible="false">
             <Rectangle width="1280" height="720" color="0x000000CC" />
             <Poster id="detailPoster" translation="[80,90]" width="560" height="420" loadDisplayMode="scaleToFit" />
