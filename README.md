@@ -38,4 +38,9 @@ I’d also enhance the animations between rows to make navigation feel more poli
 Implement loading spinner
 Utils.brs
 Contains helper functions like URL creation and JSON parsing.
+
+
 While the app currently lacks caching, pagination, and advanced error handling, it demonstrates strong fundamentals in SceneGraph architecture, API integration, and focus-based navigation, with clear opportunities for future enhancements.
+Adding images of Homescreen 
+![Homepage2](https://github.com/user-attachments/assets/df371c3a-3e21-40f1-9312-74798ea31c1e)
+![Homepage1](https://github.com/user-attachments/assets/0546312d-577c-41c5-acc3-6d13d070e060)
